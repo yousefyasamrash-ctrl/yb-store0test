@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite games</title>
+    <link rel="stylesheet" href="fav.css">
+</head>
+<body>
+    <div class="lolipop">
+        <div class="header">
+            <div class="cont">
+                <img src="images/1d74b469-1bfb-4fcf-bcc6-fac507dcff97.png" alt="YB logo" width="100px" height="100px">
+                <div class="links">
+                    <a class="link" href="index.html">Home</a>
+                </div>
+            </div>
+        </div>
+        <div class="land-area">
+            <div class="pic-cont">
+                <div class="pic-text">
+                    <dl>
+                        <dt>
+                            <h1>Favorite games</h1>
+                        </dt>
+                        <dd>
+                            <h3>Your saved games list</h3>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="search-cont"><br><br><br>
+                <h3>Search:</h3>
+                <div>
+                    <input id="searchinput" class="search-bar" type="text" placeholder="Search a game...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- حاوية عرض المفضلات -->
+    <div class="trending-cards" id="fav-container" style="margin-top: 0; border-radius: 20px; min-height: 200px;">
+        <!-- ستظهر الألعاب هنا تلقائياً -->
+    </div>
+
+    <script>
+        const favContainer = document.getElementById('fav-container');
+        let favorites = JSON.parse(localStorage.getItem('yb_favorites_html')) || [];
+
+        function renderFavorites() {
+            favContainer.innerHTML = '';
+            if (favorites.length === 0) {
+                favContainer.innerHTML = '<h3 style="grid-column: 1/-1; color: #555; margin: 40px 0;">No favorite games added yet!</h3>';
+                return;
+            }
+
+            favorites.forEach((item, index) => {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = item.html;
+                const card = tempDiv.firstElementChild;
+
+                // تحديث حالة القلب داخل صفحة المفضلات ليحذف اللعبة عند الضغط عليه مرة أخرى
+                const heart = card.querySelector('.fav-heart');
+                if (heart) {
+                    heart.classList.add('active');
+                    heart.style.filter = 'none';
+                    heart.addEventListener('click', () => {
+                        favorites.splice(index, 1);
+                        localStorage.setItem('yb_favorites_html', JSON.stringify(favorites));
+                        renderFavorites();
+                    });
+                }
+
+                favContainer.appendChild(card);
+            });
+        }
+
+        renderFavorites();
+
+        // كود البحث البسيط في المفضلات
+        const searchInput = document.getElementById('searchinput');
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase().trim();
+                const cards = favContainer.querySelectorAll('.card1');
+                cards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    if (title.includes(query) || query === "") {
+                        card.style.display = "";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

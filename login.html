@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>log in</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header class="header">
+        <div class="cont">
+            <img src="images/1d74b469-1bfb-4fcf-bcc6-fac507dcff97.png" alt="YB logo" width="100px" height="100px">
+            <div class="links">
+                <a class="link" href="index.html">Home</a>
+                <a class="link" href="">About</a>
+                <a class="link" href="">Contact</a>
+            </div>
+        </div>
+    </header>
+<div class="wrapper">
+<form id="login-form">
+    <h1>Log in</h1>
+    <div class="input-box">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <i class="bx"></i>
+    </div>
+    <div class="input-box">
+        <input type="password" id="login-password" placeholder="Password" required>
+        <i class="bx"></i>
+    </div>
+    <div class="remember-forgot">
+        <label> <input type="checkbox">Remember me</label>
+        <a href="">Forgot password?</a>
+    </div>
+    <button type="submit" class="btn">Login</button>
+    <div class="creat">
+        <p>Don't have an account?<a href="create.html">Creat account</a></p>
+    </div>
+</form>
+</div>
+
+    <!-- كود ربط Firebase لتسجيل الدخول -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // إعدادات مشروعك الحقيقية
+        const firebaseConfig = {
+            apiKey: "AIzaSyAEW1gSlt0UWuQu7mUoDaWso-zLq10HcrA",
+            authDomain: "yb-store-46a72.firebaseapp.com",
+            projectId: "yb-store-46a72",
+            storageBucket: "yb-store-46a72.firebasestorage.app",
+            messagingSenderId: "139287385572",
+            appId: "1:139287385572:web:6e67ea3e19810e26d5a3f1",
+            measurementId: "G-DFTXBXJVGH"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginForm = document.getElementById('login-form');
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert("تم تسجيل الدخول بنجاح! أهلاً بك في YB Store");
+                    window.location.href = "index.html";
+                })
+                .catch((error) => {
+                    alert("خطأ: تأكد من الإيميل أو كلمة المرور");
+                });
+        });
+    </script>
+</body>
+</html>

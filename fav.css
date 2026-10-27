@@ -1,0 +1,229 @@
+body {
+    margin: 0px;
+    background-color: aliceblue;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    zoom: 100%;
+}
+
+.header {
+    background-color: rgb(19, 19, 94);
+padding: 0px;
+margin: 0px;
+}
+
+.links {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    margin-left: 10px;
+    background:linear-gradient(135deg,rgb(19, 19, 94),rgb(31, 31, 95));
+    border-radius: 20px;
+
+}
+
+.link {
+    text-decoration: none;
+    color: aliceblue;
+    transition-duration: 0.2s;
+    padding: 5px 30px;
+    border-radius: 20px;
+
+}
+
+.link:hover {
+    background-color: rgb(1, 1, 179);
+    padding: 10px;
+}
+
+.login {
+    text-decoration: none;
+    color: aliceblue;
+    transition-duration: 0.2s;
+    padding: 5px 30px;
+    border-radius: 20px;
+    background:linear-gradient(135deg,rgb(80, 17, 109),darkblue);
+}
+
+.login:hover {
+    background:linear-gradient(135deg,rgb(97, 21, 133),rgb(0, 0, 155));
+    padding: 10px;
+}
+
+.cont {
+    display: flex;
+    align-items: center;
+}
+
+.pic-cont img {
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 2px black;
+
+
+}
+
+.pic-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.pic-text {
+    color: aliceblue;
+
+}
+
+.search-cont {
+    margin-left: 20px;
+}
+
+.search-cont h3 {
+    color: aliceblue;
+}
+
+.search-bar {
+    box-shadow: 0 0 10px rgba(0, 0, 0,.2);
+    border-radius: 10px;
+    padding: 5px;
+    border: none;
+    outline: none;
+}
+
+.search-btn {
+    border-radius: 0px 20px 20px 0px;
+    padding: 5.5px 15px;
+    border: none;
+    outline: none;
+    background-color: rgb(75, 75, 75);
+    color: aliceblue;
+    position: absolute;
+    left: 175px;
+    transition-duration: 0.2s;
+}
+
+.search-btn:hover {
+    background-color: rgb(94, 94, 94);
+    cursor: pointer;
+}
+
+.trending {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.trending button {
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    background-color: rgb(19, 19, 94);
+    color: aliceblue;
+    transition-duration: 0.2s;
+}
+
+.trending button:hover {
+    background-color: rgb(1, 1, 179);
+    cursor: pointer;
+}
+.trending-cards {
+    padding: 5px 40px;
+    justify-content: space-between;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    text-align: center;
+    margin: 0;
+    background-color: rgb(209, 209, 209);
+    border-radius: 20px 20px 0px 0px;
+    gap: 60px;
+    box-shadow: 25px 25px 25px 25px black;
+}
+.card1 img {
+    border-radius: 20px;
+    width: 200px;
+    height: 300px;
+}
+.card1 {
+    margin-top: 20px;
+    background-color: rgb(197, 197, 197);
+    padding: 10px;
+    border-radius: 20px;
+}
+.land-area {
+    background-color: rgb(19, 19, 94);
+    padding: 0px 0px 100px 0px;
+    border-radius: 0px 0px 20px 20px;
+    margin-top: 0px
+}
+.lolipop {
+  background-color:  rgb(19, 19, 94); 
+    border-radius: 0px 0px 30px 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0,.2);
+}
+.trending-cards2 {
+    padding: 5px 40px;
+    justify-content: space-between;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    text-align: center;
+    margin: 0;
+    background-color: rgb(209, 209, 209);
+    gap: 60px;
+}
+.download-btn {
+    display: inline-block;
+    background-color: darkblue;
+    color: aliceblue;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition-duration: 0.2s;
+}
+.download-btn:hover {
+    background-color: rgb(0, 0, 158);
+padding: 14px 26px;
+}
+.file-size-badge {
+    color: #333;
+    background-color: transparent;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 10px rgba(0, 0, 0,.2);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+/* تصميم زر القلب على الكرت */
+.card1 {
+    position: relative; /* ضروري عشان القلب يتموضع بالنسبة للكرت */
+}
+
+.fav-heart {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s, color 0.2s;
+    background: rgba(255, 255, 255, 0.85);
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.fav-heart:hover {
+    transform: scale(1.15);
+}
+
+.fav-heart.active {
+    color: red;
+}

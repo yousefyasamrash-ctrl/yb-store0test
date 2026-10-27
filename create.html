@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account</title>
+    <link rel="stylesheet" href="create.css">
+</head>
+<body>
+    <header class="header">
+        <div class="cont">
+            <img src="images/1d74b469-1bfb-4fcf-bcc6-fac507dcff97.png" alt="YB logo" width="100px" height="100px">
+            <div class="links">
+                <a class="link" href="index.html">Home</a>
+                <a class="link" href="">About</a>
+                <a class="link" href="">Contact</a>
+                <a class="login" href="login.html">Log in</a>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <form id="signup-form">
+            <h1>Create account</h1>
+            <div class="input-box">
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <i class="bx"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="signup-password" placeholder="Create password" required minlength="8">
+                <i class="bx"></i>
+            </div>
+            <button type="submit" class="btn">Sign up</button>
+        </form>
+    </div>
+
+    <!-- ربط Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // ضع إعدادات مشروعك هنا
+        const firebaseConfig = {
+            apiKey: "AIzaSyAEW1gSlt0UWuQu7mUoDaWso-zLq10HcrA",
+            authDomain: "yb-store-46a72.firebaseapp.com",
+            projectId: "yb-store-46a72",
+            storageBucket: "yb-store-46a72.firebasestorage.app",
+            messagingSenderId: "139287385572",
+            appId: "1:139287385572:web:6e67ea3e19810e26d5a3f1",
+            measurementId: "G-DFTXBXJVGH"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const signupForm = document.getElementById('signup-form');
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    alert("تم إنشاء الحساب بنجاح!");
+                    window.location.href = "login.html";
+                })
+                .catch((error) => {
+                    alert("خطأ: " + error.message);
+                });
+        });
+    </script>
+</body>
+</html>
